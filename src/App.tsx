@@ -1,4 +1,5 @@
 import { ThemeProvider } from 'styled-components';
+import { PokemonList } from './pages/PokemonList';
 
 import ResetStyle from './styles/ResetStyle';
 import { theme } from './styles/theme';
@@ -8,7 +9,7 @@ const App = () => {
     <>
       <ThemeProvider theme={theme}>
         <ResetStyle />
-        <h1>Hello World</h1>
+        <PokemonList />
       </ThemeProvider>
     </>
   );
