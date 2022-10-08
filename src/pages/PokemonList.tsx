@@ -1,7 +1,13 @@
+import { usePokemon } from '../hooks/usePokemon';
+
 const PokemonList = () => {
+  const { pokemons } = usePokemon();
+
   return (
     <>
-      <h1>Hello World</h1>
+      {pokemons.map((pokemon) => (
+        <div key={pokemon.id}>{pokemon.name}</div>
+      ))}
     </>
   );
 };

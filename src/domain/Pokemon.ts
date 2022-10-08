@@ -1,7 +1,7 @@
 type Pokemon = {
   id: number;
   name: string;
-  img: string;
+  sprite: string;
   type: string;
 };
 
