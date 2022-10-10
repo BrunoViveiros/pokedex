@@ -45,8 +45,6 @@ const usePokemon = () => {
       };
     });
 
-    console.log(formattedPokemonListDetails);
-
     setPokemons(formattedPokemonListDetails);
   }, [getPokemonListDetails]);
 
