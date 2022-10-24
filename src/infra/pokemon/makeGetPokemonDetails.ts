@@ -1,4 +1,4 @@
-import pokemonApiClient, { PokemonApiClient } from '../pokemonApiClient';
+import { PokemonApiClient } from '../api/pokemonApiClient';
 
 export type PokemonDetails = {
   id: number;
@@ -23,12 +23,12 @@ type PokemonTypes = {
   };
 };
 
-type MakeFetchPokemonDetailsProps = {
+type MakeGetPokemonDetailsProps = {
   pokemonApiClient: PokemonApiClient;
 };
 
-const makeFetchPokemonDetails =
-  ({ pokemonApiClient }: MakeFetchPokemonDetailsProps) =>
+const makeGetPokemonDetails =
+  ({ pokemonApiClient }: MakeGetPokemonDetailsProps) =>
   async (pokemonName: string) => {
     const response = await pokemonApiClient.get<PokemonDetails>(
       `pokemon/${pokemonName}`
@@ -37,6 +37,4 @@ const makeFetchPokemonDetails =
     return response.data;
   };
 
-const fetchPokemonDetails = makeFetchPokemonDetails({ pokemonApiClient });
-
-export { fetchPokemonDetails };
+export { makeGetPokemonDetails };
