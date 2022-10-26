@@ -1,9 +1,9 @@
-import { PokemonDetails } from './makeGetPokemonDetails';
+import { Pokemon } from '../../domain/Pokemon';
 import { PokemonList } from './makeGetPokemonList';
 
 type Dependencies = {
   getPokemonList: () => Promise<PokemonList>;
-  getPokemonDetails: (pokemonName: string) => Promise<PokemonDetails>;
+  getPokemonDetails: (pokemonName: string) => Promise<Pokemon>;
 };
 
 const makeGetPokemonDetailsList =
