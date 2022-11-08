@@ -13,8 +13,6 @@ export const ContainerProvider = ({ children }: ContainerProviderProps) => (
 
 export const useContainer = () => {
   const containerContext = useContext(ContainerContext);
-  if (!containerContext)
-    throw new Error('Needs to be nested on a container provider');
 
   return containerContext;
 };
