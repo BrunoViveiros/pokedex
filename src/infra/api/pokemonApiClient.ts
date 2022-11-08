@@ -1,9 +1,11 @@
-import axios, { AxiosInstance } from 'axios';
+import axios from 'axios';
+
+const BASE_URL = 'https://pokeapi.co/api/v2';
 
 const pokemonApiClient = axios.create({
-  baseURL: 'https://pokeapi.co/api/v2/',
+  baseURL: BASE_URL,
 });
 
 export default pokemonApiClient;
 
-export type PokemonApiClient = AxiosInstance;
+export type PokemonApiClient = typeof pokemonApiClient;

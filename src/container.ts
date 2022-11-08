@@ -10,4 +10,11 @@ const getPokemonDetailsList = makeGetPokemonDetailsList({
   getPokemonList,
 });
 
-export { getPokemonDetails, getPokemonList, getPokemonDetailsList };
+const container = {
+  getPokemonDetails,
+  getPokemonList,
+  getPokemonDetailsList,
+};
+
+export { container };
+export type Container = typeof container;
