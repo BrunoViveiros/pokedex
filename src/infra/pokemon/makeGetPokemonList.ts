@@ -12,14 +12,21 @@ type Pokemon = {
   url: string;
 };
 
-type MakeGetPokemonListProps = {
+export type MakeGetPokemonListProps = {
   pokemonApiClient: PokemonApiClient;
+};
+
+export type GetPokemonListProps = {
+  offset: number;
+  limit: number;
 };
 
 const makeGetPokemonList =
   ({ pokemonApiClient }: MakeGetPokemonListProps) =>
-  async () => {
-    const response = await pokemonApiClient.get<PokemonList>('pokemon');
+  async ({ offset, limit }: GetPokemonListProps) => {
+    const response = await pokemonApiClient.get<PokemonList>(
+      `pokemon?offset=${offset}&limit=${limit}`
+    );
 
     return response.data;
   };

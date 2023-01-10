@@ -1,15 +1,23 @@
 import { Pokemon } from '../../domain/Pokemon';
-import { PokemonList } from './makeGetPokemonList';
+import { PokemonList, GetPokemonListProps } from './makeGetPokemonList';
 
 type Dependencies = {
-  getPokemonList: () => Promise<PokemonList>;
+  getPokemonList: ({
+    offset,
+    limit,
+  }: GetPokemonListProps) => Promise<PokemonList>;
   getPokemonDetails: (pokemonName: string) => Promise<Pokemon>;
+};
+
+type GetPokemonDetailsList = {
+  offset?: number;
+  limit?: number;
 };
 
 const makeGetPokemonDetailsList =
   ({ getPokemonList, getPokemonDetails }: Dependencies) =>
-  async () => {
-    const pokemonList = await getPokemonList();
+  async ({ offset = 0, limit = 10 }: GetPokemonDetailsList) => {
+    const pokemonList = await getPokemonList({ offset, limit });
 
     const pokemonQueries = pokemonList.results.map(({ name }) => {
       return getPokemonDetails(name);
@@ -17,7 +25,7 @@ const makeGetPokemonDetailsList =
 
     const pokemonListDetails = await Promise.all(pokemonQueries);
 
-    return pokemonListDetails;
+    return { ...pokemonList, results: pokemonListDetails };
   };
 
 export { makeGetPokemonDetailsList };

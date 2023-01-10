@@ -1,7 +1,7 @@
 import { createContext, ReactNode, useContext } from 'react';
 import { container } from '../container';
 
-const ContainerContext = createContext(container);
+export const ContainerContext = createContext(container);
 
 type ContainerProviderProps = { children: ReactNode };
 

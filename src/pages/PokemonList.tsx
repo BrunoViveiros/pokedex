@@ -8,9 +8,14 @@ const PokemonList = () => {
 
   useEffect(() => {
     const getList = async () => {
-      const pokemonList = await getPokemonDetailsList();
+      const { results, count } = await getPokemonDetailsList({
+        offset: 20,
+        limit: 5,
+      });
 
-      setPokemons(pokemonList);
+      console.log(count);
+
+      setPokemons(results);
     };
 
     getList();
@@ -19,7 +24,15 @@ const PokemonList = () => {
   return (
     <>
       {pokemons &&
-        pokemons.map((pokemon) => <div key={pokemon.id}>{pokemon.name}</div>)}
+        pokemons.map((pokemon) => <p key={pokemon.id}>{pokemon.name}</p>)}
+
+      <br />
+
+      <div>
+        <p>Prev</p>
+        <p>1</p>
+        <p>Next</p>
+      </div>
     </>
   );
 };
